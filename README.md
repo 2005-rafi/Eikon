@@ -63,6 +63,18 @@ flowchart TB
     StateManagement -->|updates| UI
 ```
 
+## Workflow
+``` mermaid
+flowchart TB
+
+    UI -->|uses| StateManagement
+    StateManagement -->|calls| DataLayer
+    UI -->|triggers| NativeIntegration
+    NativeIntegration -->|provides| WindowAPIs["Window APIs"]
+    DataLayer -->|stores| SalesEntry["SalesEntry"]
+    StateManagement -->|updates| UI
+```
+
 ## Key Components
 
 - **`Create()` / `Destroy()`** – Entry points for window lifecycle management.

@@ -22,40 +22,43 @@
 
 ```mermaid
 flowchart TB
-    subgraph UI [User Interface]
+
+    subgraph UI["User Interface"]
         direction TB
-        MainScreen[MainScreen]
-        AnalyticsScreen[AnalyticsScreen]
-        HistoryScreen[HistoryScreen]
-        SettingsSection[SettingsSection]
+        MainScreen["MainScreen"]
+        AnalyticsScreen["AnalyticsScreen"]
+        HistoryScreen["HistoryScreen"]
+        SettingsSection["SettingsSection"]
     end
 
-    subgraph StateManagement [State Management]
+    subgraph StateManagement["State Management"]
         direction TB
-        Riverpod[Riverpod Providers]
-        AnalyticsController[AnalyticsController]
-        SalesEntryController[SalesEntryController]
+        Riverpod["Riverpod Providers"]
+        AnalyticsController["AnalyticsController"]
+        SalesEntryController["SalesEntryController"]
     end
 
-    subgraph DataLayer [Data Layer]
+    subgraph DataLayer["Data Layer"]
         direction TB
         DriftDB["Drift (SQLite) DB"]
-        SalesEntryDao[SalesEntryDao]
-        AppDatabase[AppDatabase]
+        SalesEntryDao["SalesEntryDao"]
+        AppDatabase["AppDatabase"]
+        SalesEntry["SalesEntry"]
     end
 
-    subgraph NativeIntegration [Native Integration]
+    subgraph NativeIntegration["Native Integration"]
         direction TB
-        WndProc[WndProc]
-        MessageHandler[MessageHandler]
-        Create[Create]
-        Destroy[Destroy]
+        WndProc["WndProc"]
+        MessageHandler["MessageHandler"]
+        Create["Create"]
+        Destroy["Destroy"]
+        WindowAPIs["Window APIs"]
     end
 
     UI -->|uses| StateManagement
     StateManagement -->|calls| DataLayer
     UI -->|triggers| NativeIntegration
-    NativeIntegration -->|provides| Window APIs
+    NativeIntegration -->|provides| WindowAPIs
     DataLayer -->|stores| SalesEntry
     StateManagement -->|updates| UI
 ```

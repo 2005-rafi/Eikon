@@ -39,7 +39,7 @@ flowchart TB
 
     subgraph DataLayer [Data Layer]
         direction TB
-        DriftDB[Drift (SQLite) DB]
+        DriftDB["Drift (SQLite) DB"]
         SalesEntryDao[SalesEntryDao]
         AppDatabase[AppDatabase]
     end
